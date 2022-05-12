@@ -50,6 +50,7 @@ body {
 }
 
 .folder_item {
+  position: relative;
   padding: 5px 0px;
   border: 1px solid black;
   margin: 2px auto;
@@ -58,4 +59,16 @@ body {
 
 .fa-folder-closed {
   padding: 0px 10px;
+}
+
+.delete_folder {
+  position: absolute;
+  right: 10px;
+  border-style: none;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+}
+
+.delete_folder:hover {
+  transform: scale(1.1);
 }
