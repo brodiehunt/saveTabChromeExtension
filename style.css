@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  min-width: 400px;
+  min-width: 600px;
   max-width: 600px;
 }
 
@@ -12,6 +12,7 @@ body {
   padding-bottom: 10px;
 }
 
+/* Folder container styles */
 .folder_container {
   width: 100%;
 }
@@ -49,21 +50,38 @@ body {
   padding-left: 25px;
 }
 
+/* Individual folder item styles */
+
 .folder_item {
   position: relative;
   padding: 5px 0px;
   border: 1px solid black;
   margin: 2px auto;
   font-size: 1em;
+  cursor: pointer;
 }
 
 .fa-folder-closed {
+  position: relative;
+  top: 3px;
   padding: 0px 10px;
+  width: 20px;
+  height: 20px;
+
+}
+
+
+.folder_trash {
+  width: 100%;
+  height: 100%;
 }
 
 .delete_folder {
   position: absolute;
-  right: 10px;
+  height: 25px;
+  width: 40px;
+  right: 20px;
+  padding: 0;
   border-style: none;
   cursor: pointer;
   transition: 0.2s ease-in;
@@ -71,4 +89,65 @@ body {
 
 .delete_folder:hover {
   transform: scale(1.1);
+}
+
+/* Url container styles */
+
+.link_container {
+  width: 100%;
+}
+
+.link_input_container {
+  width: 100%;
+  border-bottom: 1px solid black;
+  padding-bottom: 20px;
+}
+
+.input.url_input {
+  width: 50%;
+}
+
+.add_button.url {
+  width: 18%;
+  margin-right: 10px;
+}
+
+.url_list {
+  list-style: none;
+  padding-left: 25px;
+}
+
+.url_item {
+  position: relative;
+  padding: 5px 0px;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 4px auto;
+  font-size: 1em;
+}
+
+a {
+  padding-left: 20px;
+}
+
+.delete_url {
+  position: absolute;
+  right: 20px;
+  top: 7px;
+  padding: 0;
+  border-style: none;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+}
+
+.delete_url:hover {
+  transform: scale(1.1);
+}
+
+
+
+/* Any element that needs display none */
+
+.none {
+  display: none;
 }
