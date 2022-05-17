@@ -4,23 +4,36 @@ body {
   box-sizing: border-box;
   min-width: 600px;
   max-width: 600px;
+  background: linear-gradient(11.34deg, rgba(129, 52, 255, 0.06) 10.51%, rgba(129, 52, 255, 0.06) 62.59%), radial-gradient(81.94% 156.81% at 92.79% 86.81%, rgba(93, 33, 210, 0.06) 0%, rgba(201, 203, 241, 0) 100%), radial-gradient(67.32% 179.24% at -4.24% -5.99%, rgba(111, 134, 255, 0.06) 0%, rgba(183, 194, 255, 0) 100%);
+  background: white;
 }
 
+/* colors purple shade 1 #242582, purple shade 2 #2f2fa2, pink #f64c72 */
+header {
+  color: #232136;
+}
 .app_title {
   text-align: center;
-  border-bottom: 1px solid black;
-  padding-bottom: 10px;
+  padding: 30px 0px;
+  margin: 0;
+  font-size: 2.5em;
+  letter-spacing: 4px;
 }
 
-/* Folder container styles */
-.folder_container {
-  width: 100%;
+span {
+  color: #5d21d2;
 }
 
-.folder_input_container {
+/* Styles applied to both url container/list and folder container/list */
+.container {
   width: 100%;
-  border-bottom: 1px solid black;
   padding-bottom: 20px;
+}
+
+.input_container {
+  width: 100%;
+  padding-bottom: 20px;
+  
 }
 
 .input {
@@ -29,62 +42,81 @@ body {
   padding: 10px;
   padding-left: 15px;
   font-size: 1em;
+  border-radius: 3px;
+  border: 2px solid #5d21d2;
+  color: black;
 }
 
-.add_button {
+
+
+.input:active {
+
+}
+
+.input_btn {
+  border-style: none;
   width: 20%;
   padding: 10px;
   font-size: 1em;
+  background-color:#5d21d2;
+  border: 2px solid #5d21d2;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
 }
 
-.folder_display_container {
-  width: 100%;
+.display_container {
+  padding-bottom: 20px;
+  background: linear-gradient(11.34deg, rgba(129, 52, 255, 0.06) 10.51%, rgba(129, 52, 255, 0.06) 62.59%), radial-gradient(81.94% 156.81% at 92.79% 86.81%, rgba(93, 33, 210, 0.06) 0%, rgba(201, 203, 241, 0) 100%), radial-gradient(67.32% 179.24% at -4.24% -5.99%, rgba(111, 134, 255, 0.06) 0%, rgba(183, 194, 255, 0) 100%);
 }
 
 .subtitle {
-  padding-left: 2%;
+  padding: 10px 2%;
+  margin: 0;
+  color: #232136;
+  text-align: center;
 }
 
-.folder_list {
+.items_list {
   list-style: none;
-  padding-left: 25px;
+  padding: 0 2%;
 }
+
+.list_item {
+  position: relative;
+  padding: 5px 10px;
+  border-radius: 3px;
+  margin: 4px auto;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  
+}
+
+
 
 /* Individual folder item styles */
 
-.folder_item {
-  position: relative;
-  padding: 5px 0px;
-  border: 1px solid black;
-  margin: 2px auto;
-  font-size: 1em;
-  cursor: pointer;
-}
-
 .fa-folder-closed {
-  position: relative;
-  top: 3px;
   padding: 0px 10px;
   width: 20px;
-  height: 20px;
-
-}
-
-
-.folder_trash {
-  width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .delete_folder {
   position: absolute;
-  height: 25px;
-  width: 40px;
+  padding: 3px 8px;
   right: 20px;
-  padding: 0;
-  border-style: none;
   cursor: pointer;
   transition: 0.2s ease-in;
+  background-color: white;
+  color: #5d21d2;
+  border: 1px solid #5d21d2;
+  border-radius: 3px;
+
 }
 
 .delete_folder:hover {
@@ -93,58 +125,49 @@ body {
 
 /* Url container styles */
 
-.link_container {
+
+.url_btns {
   width: 100%;
+  padding: 10px 2%;
+  display: flex;
+  justify-content: center;
 }
 
-.link_input_container {
-  width: 100%;
-  border-bottom: 1px solid black;
-  padding-bottom: 20px;
-}
-
-.input.url_input {
-  width: 50%;
-}
-
-.add_button.url {
-  width: 18%;
-  margin-right: 10px;
-}
-
-.url_list {
-  list-style: none;
-  padding-left: 25px;
-}
-
-.url_item {
-  position: relative;
-  padding: 5px 0px;
-  border: 1px solid black;
-  border-radius: 4px;
-  margin: 4px auto;
+.btn_url {
+  padding: 10px;
   font-size: 1em;
+  width: 26%;
+  margin: 0 15px;
+  background-color: white;
+  border: 1px solid #5d21d2;
+  border-radius: 3px;
+  color: #5d21d2;
+  font-weight: bold;
+}
+
+.list_item.url {
+  justify-content: space-between;
 }
 
 a {
-  padding-left: 20px;
+  padding-left: 10px;
+  color: #232136;
+  text-decoration-color: #5d21d2;
 }
 
 .delete_url {
-  position: absolute;
-  right: 20px;
-  top: 7px;
-  padding: 0;
-  border-style: none;
+  padding: 3px 8px;
   cursor: pointer;
   transition: 0.2s ease-in;
+  background-color: white;
+  color: #5d21d2;
+  border: 1px solid #5d21d2;
+  border-radius: 3px;
 }
 
 .delete_url:hover {
   transform: scale(1.1);
 }
-
-
 
 /* Any element that needs display none */
 

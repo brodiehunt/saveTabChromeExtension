@@ -8,36 +8,42 @@
   <title>Study Tab Saver</title>
 
   <link href="style.css" type="text/css" rel="stylesheet">
-  <!-- <script src="https://kit.fontawesome.com/f8ab8da9dd.js" crossorigin="anonymous"></script> -->
 </head>
 <body>
-  <h1 class="app_title">Study | Tab | Save</h1>
-  <div class="folder_container" id="folder_container">
-    <div class="folder_input_container">
-      <input class="input" id="folder_input" type="text" placeholder="New folder name">
-      <button class="add_button" id="add_folder_btn" aria_label="Add new folder">Add folder</button>
-    </div>
-    <div class="folder_display_container">
-      <h2 class="subtitle">All Folders</h2>
-      <ul class="folder_list" id="folder_list">
-
-      </ul>
-    </div>
-  </div>
-  <div class="link_container none" id="link_container">
-    <div class="link_input_container" >
-      <input class="input url_input" id="url_input" type="text" placeholder="Add URL eg https://www.facebook.com">
-      <button class="add_button url" id="add_url_btn" aria-label="Add new URL">Add URL</button>
-      <button class="add_button url" id="save_tab_btn" aria-label="Save tab">Save Tab</button>
-      <button class="return_to_folder" id="return_btn" aria-label="return to folders">Return to folders</button>
-    </div>
-    <div class="url_display_container">
-      <h2 class="subtitle">URLs</h2>
-      <ul class="url_list" id="url_list">
-
-      </ul>
-    </div>
-  </div>
+  <header>
+    <h1 class="app_title"><span>S</span>tudy | <span>T</span>ab | <span>S</span>ave</h1>
+  </header>
+  <main> 
+    <section class="container" id="folder_container">
+      <div class="input_container">
+        <input class="input" id="folder_input" type="text" placeholder="New folder name">
+        <button class="input_btn" id="add_folder_btn" aria_label="Add new folder">Add folder</button>
+      </div>
+      <div class="display_container">
+        <h2 class="subtitle">All Folders</h2>
+        <ul class="items_list" id="folder_list">
+  
+        </ul>
+      </div>
+    </section>
+    <section class="container none" id="link_container">
+      <div class="input_container" >
+        <input class="input" id="url_input" type="text" placeholder="Add URL eg https://www.facebook.com">
+        <button class="input_btn" id="add_url_btn" aria-label="Add new URL">Add URL</button>
+        <div class="url_btns">
+          <button class="btn_url" id="save_tab_btn" aria-label="Save tab">Save Tab</button>
+          <button class="btn_url" id="save_all_tabs_btn" aria-label="Save all tabs">Save all tabs</button>
+          <button class="btn_url" id="return_btn" aria-label="return to folders">Return to folders</button>
+        </div>
+      </div>
+      <div class="display_container">
+        <h2 class="subtitle">URLs</h2>
+        <ul class="items_list" id="url_list">
+  
+        </ul>
+      </div>
+    </section>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>

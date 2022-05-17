@@ -9,6 +9,7 @@ const newUrlInput = document.getElementById('url_input');
 const addFolderBtn = document.getElementById('add_folder_btn');
 const addUrlBtn = document.getElementById('add_url_btn');
 const saveTabBtn = document.getElementById('save_tab_btn');
+const saveAllTabsBtn = document.getElementById('save_all_tabs_btn')
 const returnBtn = document.getElementById('return_btn');
 
 // ul elements for folder list and url list
@@ -39,14 +40,6 @@ function onWindowLoad() {
 
 
 
-
-// delete folder event listeners
-// deleteFolderButtons.forEach((button) => {
-//   button.addEventListener('click', (e) => {
-//     console.log(e)
-//   })
-// })
-
 // add singular folder to folder list
 function addFolder() {
   if (newFolderInput.value) {
@@ -70,37 +63,34 @@ function renderFolders(foldersArray) {
 
 // render singular folder after being added, or called multiple times onload
 function renderFolder(folder) {
-  // Create folderList Item
+  
   let listItem = document.createElement("li");
-  listItem.classList.add('folder_item');
+  listItem.classList.add('list_item', 'folder');
   listItem.setAttribute('id', `folder_item_${folder.id}`);
   listItem.setAttribute('dataId', `${folder.id}`);
 
-  // Create Icons for Folder List items
+  
   let folderIcon = document.createElement("img");
   folderIcon.classList.add("fa-solid", "fa-folder-closed");
   folderIcon.setAttribute('src', 'folder.png');
 
-  // Create delete button and add event listener
+  
   let button = document.createElement("button");
   button.classList.add("delete_folder");
-  button.innerText = "delete";
+  button.innerText = "Delete";
   button.setAttribute("id", folder.id);
   button.addEventListener('click', (e) => {
     deleteFolder(e);
   })
 
-  // Append Folder list item to folder list
+  
   listItem.textContent = folder.name;
   listItem.prepend(folderIcon);
   listItem.append(button);
   
 
-  // add event listener to folder; 
-  listItem.addEventListener('click', function(e) {
-    console.log("event listener for foler working", e);
-    // toggle all elements to display none, toggle all the unseen elements to display block;
-    // display: render all the url from the folder into 
+  
+  listItem.addEventListener('click', function(e) { 
     toggleListFolderItems(e);
   })
   folderList.prepend(listItem);
@@ -120,24 +110,22 @@ function deleteFolder(event) {
 
 }
 
+
+
+
 // All the URL related functions
 
 
 // Function will be added to clickable list item
 function toggleListFolderItems(event) {
-  
-  // build and render all of the individual urls and display them. 
   folderContainerEl.classList.toggle('none');
   linkContainerEl.classList.toggle('none');
-
   let folderId = event.target.attributes.dataid.value;
   urlList.setAttribute('dataId', folderId)
   let currentFolder = folderData.find((item) => {
     return item.id === folderId;
   })
-
   
-  // now render all urls from currentURL list;
   renderUrls(currentFolder.urls);
 }
 
@@ -150,8 +138,8 @@ function renderUrls(urlArray) {
     })
 }
 
-// Function that adds new url to url list 
 
+// Function that adds new url to url list 
 function addUrl() {
   let url = newUrlInput.value;
   if (url) {
@@ -168,6 +156,7 @@ function addUrl() {
   }
 }
 
+// save current tab to folder
 function saveCurrentTab() {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     let url = tabs[0].url;
@@ -183,10 +172,31 @@ function saveCurrentTab() {
   })
 }
 
+// function called to save all current tabs to folder
+
+function saveAllTabs() {
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    let tabsList = tabs
+
+    folderData = folderData.map((item) => {
+      if (item.id === urlList.getAttribute('dataid')) {
+        tabs.forEach((tab) => {
+          item.urls.push(tab.url);
+          buildUrlListItem(tab.url);
+        })
+        return item
+      }
+      return item;
+    })
+    localStorage.setItem('folders', JSON.stringify(folderData));
+  })
+}
+
+
 // Function called to build url and render url
 function buildUrlListItem(url) {
   let listItem = document.createElement('li');
-  listItem.classList.add('url_item');
+  listItem.classList.add('list_item', 'url');
 
   let urlLink = document.createElement('a');
   urlLink.classList.add('url_link');
@@ -195,7 +205,7 @@ function buildUrlListItem(url) {
   urlLink.innerText = url;
 
   let trashIcon = document.createElement("button");
-  trashIcon.innerText = 'delete';
+  trashIcon.innerText = 'Delete';
   trashIcon.classList.add("fa-solid", "fa-trash-can", "delete_url" );
   trashIcon.addEventListener('click', (e) => {
     deleteUrl(e);
@@ -207,6 +217,8 @@ function buildUrlListItem(url) {
 }
 
 
+
+// Delete the url from the folder
 function deleteUrl(event) {
   let url = event.target.parentNode.innerText;
   let listItemUrl = event.target.parentNode;
@@ -223,6 +235,7 @@ function deleteUrl(event) {
 
 }
 
+// called to return to view of folders
 function returnToFolders() {
   urlList.innerHTML = '';
   folderContainerEl.classList.toggle('none');
@@ -230,10 +243,7 @@ function returnToFolders() {
 }
 
 
-
-
-
-
+// generates a unique id for each folder
 function generateId() {
   let alphabet= "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   let number = "0123456789";
