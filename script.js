@@ -27,6 +27,7 @@ const linkContainerEl = document.getElementById('link_container');
 addFolderBtn.addEventListener('click', addFolder);
 addUrlBtn.addEventListener('click', addUrl);
 saveTabBtn.addEventListener('click', saveCurrentTab);
+saveAllTabsBtn.addEventListener('click', saveAllTabs)
 returnBtn.addEventListener('click', returnToFolders);
 
 window.onload = onWindowLoad;
@@ -175,9 +176,9 @@ function saveCurrentTab() {
 // function called to save all current tabs to folder
 
 function saveAllTabs() {
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+  chrome.tabs.query({ currentWindow: true}, function(tabs) {
     let tabsList = tabs
-
+    console.log(tabsList);
     folderData = folderData.map((item) => {
       if (item.id === urlList.getAttribute('dataid')) {
         tabs.forEach((tab) => {

@@ -27,7 +27,6 @@ span {
 /* Styles applied to both url container/list and folder container/list */
 .container {
   width: 100%;
-  padding-bottom: 20px;
 }
 
 .input_container {
@@ -63,11 +62,14 @@ span {
   border-radius: 3px;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .display_container {
   padding-bottom: 20px;
   background: linear-gradient(11.34deg, rgba(129, 52, 255, 0.06) 10.51%, rgba(129, 52, 255, 0.06) 62.59%), radial-gradient(81.94% 156.81% at 92.79% 86.81%, rgba(93, 33, 210, 0.06) 0%, rgba(201, 203, 241, 0) 100%), radial-gradient(67.32% 179.24% at -4.24% -5.99%, rgba(111, 134, 255, 0.06) 0%, rgba(183, 194, 255, 0) 100%);
+  max-height: 400px;
+  overflow-y: scroll;
 }
 
 .subtitle {
@@ -143,16 +145,29 @@ span {
   border-radius: 3px;
   color: #5d21d2;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .list_item.url {
   justify-content: space-between;
+  /* text-overflow: ellipsis;
+  white-space: nowrap; */
+  /* overflow: hidden; */
+}
+
+.link_container {
+
 }
 
 a {
+  display: inline-block;
+  width: 85%;
   padding-left: 10px;
   color: #232136;
   text-decoration-color: #5d21d2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow:hidden;
 }
 
 .delete_url {
